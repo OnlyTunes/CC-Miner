@@ -20,7 +20,7 @@ local blacklist = {
 	{name="minecraft:bedrock"},
 	{name="minecraft:snow_layer"},
 	{name="minecraft:ice"},
-	{name="forge:cobblestone/deepslate"}
+	{name="forge:cobblestone/deepslate"},
 	{name="ProjRed|Exploration:projectred.exploration.stone",metadata=0},
 	{name="chisel:limestone"},
 	{name="chisel:chisel.limestone"},
