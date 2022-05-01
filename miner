@@ -22,12 +22,12 @@ function b2i(data)
 	end
 end
 
-function sendResource(host, swarmName, res, dmg, authtoken)
+function sendResource(host, swarmName, res, authtoken)
 	local request = ""
 	if authtoken then
-		request = host .. "/swarm/" .. swarmName .."/mined?token=" .. authtoken .. "&id=" .. os.getComputerID() .. "&res=" .. res .. "&dmg=" .. dmg
+		request = host .. "/swarm/" .. swarmName .."/mined?token=" .. authtoken .. "&id=" .. os.getComputerID() .. "&res=" .. res
 	else
-		request = host .. "/swarm/" .. swarmName .."/mined?id=" .. os.getComputerID() .. "&res=" .. res .. "&dmg=" .. dmg
+		request = host .. "/swarm/" .. swarmName .."/mined?id=" .. os.getComputerID() .. "&res=" .. res
 	end
 	local data = http.get(request)
 	if data then
@@ -147,7 +147,7 @@ function mineSides()
 		while turtle.suck(64) do end
 		if not isJunk(data) then
 			if canFit(data) then
-				sendResource(config.get("host"),config.get("swarmname"), data.name, data.damage)
+				sendResource(config.get("host"),config.get("swarmname"), data.name)
 				turtle.dig()
 			end
 		end
@@ -172,7 +172,7 @@ function mineShaft()
 				if not turtle.digDown() then
 					 break 
 				else
-					sendResource(config.get("host"),config.get("swarmname"), data.name, data.damage)
+					sendResource(config.get("host"),config.get("swarmname"), data.name)
 				end
 			end
 		end
